@@ -54,6 +54,12 @@ if (!Task.count()) {
 	}
 }
 
+if (!DefaultTask.count()) {
+	let dT = new DefaultTask(null, Task.getAll()[0].get('id'));
+	dT.save();
+	new Log(null, null, dT.get('id'), 'Default Task "' + dT.name + '" gesetzt').save();
+}
+
 if (!Rank.count()) {
 	let rankSeeds = [
 		'Rekr',
@@ -95,10 +101,10 @@ const config = {
 	sound: true,
 };
 
-
 $(document).ready(() => {
 	UserController.refreshCreateForm();
 	UserController.refreshTable();
+	TaskController.refreshSetDefault();
 
 	$('#btn-volume-switch').on('click', () => {
 		if (config.sound) {
@@ -140,5 +146,6 @@ $(document).ready(() => {
 	$('#btnAddUser').on('click', UserController.create);
 	$('#btnAddTask').on('click', TaskController.create);
 	$('#inpSearch').on('keyup', SearchController.search);
+	$('#btnDefaultTask').on('click', TaskController.setDefaultTask);
 
 });

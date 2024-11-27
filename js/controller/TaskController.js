@@ -20,4 +20,25 @@ class TaskController {
 		}
 	}
 
+	static setDefaultTask() {
+		let inp = TaskView.getDefaultTaskInput().taskID || -1;
+		
+		if (inp < 0) {
+			View.error('Wählen Sie einen Auftrag.', 'inpDefaultTaskMask');
+		} else {
+			let defaultTask = DefaultTask.getAll()[0];
+			let oldTask = new Task(defaultTask.get('id'));
+			
+			defaultTask.set('taskID', inp).save();
+			
+			new Log(null, null, null, 'Der Standardauftrag wurde von "' + oldTask.get('name') + '" zu "' + new Task(Number(inp)).get('name') + '" geändert.').save();
+	
+			UserController.refreshCreateForm();
+		}
+	}
+
+	static refreshSetDefault() {
+		TaskView.refreshSetDefaultForm(Task.getAll(), DefaultTask.getAll()[0]);
+	}
+
 }
