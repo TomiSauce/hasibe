@@ -7,7 +7,7 @@ class ORM {
 	static #storage;
 
 	constructor(id = null, rows) {
-		id = Number(id);
+		if (id !== null) id = Number(id);
 		this.#values = rows;
 		if (id !== null) {
 			this.#values['id'] = id;
