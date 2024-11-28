@@ -170,7 +170,7 @@ input[type="button"]:hover,
 	padding-left: 8px;
 	border: none;
 	outline: none;
-	border-left: 4pt solid var(--gray-l-main);
+	/* border-left: 4pt solid var(--gray-l-main); */
 	line-height: 20px;
 	border-radius: 1px;
 }
@@ -230,7 +230,6 @@ input[type="button"]:hover,
 
 .group-border {
 	height: fit-content;
-	padding: 5px;
 	display: flex;
 	flex-direction: row;
 }

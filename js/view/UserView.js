@@ -45,9 +45,9 @@ class UserView extends View {
                     '<select id="inp-update-rank-' + uid +'" onchange="UserController.updateRank(' + "'" + uid + "'"+')">'+
                         RankView.generateSelectOptions(ranks, user.get('rankID')) +
                     '</select>' +
-                    '<div id="user-surname-' + uid + '">' + user.get('lastName') + '</div>' +
-                    '<div id="user-prename-' + uid + '">' + user.get('firstName') + '</div>' +
-                    '<div id="user-driver-' + uid + '">' + ((user.get('driver')) ? user.get('driver') : '---') + '</div>' +
+                    '<input type="text" id="inp-update-last-name-' + uid + '" value="' + user.get('lastName') + '" onkeyup="UserController.updateLastName(' + uid + ', event)" title="Enter fürs Speichern">' +
+                    '<input type="text" id="inp-update-first-name-' + uid + '" value="' + user.get('firstName') + '" onkeyup="UserController.updateFirstName(' + uid + ', event)" title="Enter fürs Speichern">' +
+                    '<input type="text" id="inp-update-driver-' + uid + '" value="' + ((user.get('driver')) ? user.get('driver') : '---') + '" onkeyup="UserController.updateDriver(' + uid + ', event)" title="Enter fürs Speichern">'+
                     '<select id="inp-update-flag-' + uid +'" onchange="UserController.updateFlag(' + "'" + uid + "'"+')">'+
                         FlagView.generateSelectOptions(flags, user.get('flagID')) +
                     '</select>' +
@@ -57,7 +57,6 @@ class UserView extends View {
                     '<div id="user-timer-' + uid + '">' + timeRemaining + '</div>' +
                     '<div>' +
                         '<div class="btn-simple btn-delete" onclick="UserController.delete(' + uid + ')" title="Löschen"><i class="fa-solid fa-trash-can"></i></div>' +
-                        '<div class="btn-simple btn-edit" onclick="UserController.edit(' + uid + ')" title="Bearbeiten"><i class="fa-solid fa-pen-to-square"></i></div>' +
                         '<div class="btn-simple btn-expand" onclick="UserController.toggleUserLog(' + uid + ')" title="Gefechtsjournal Öffnen"><i id="btn-expand-' + uid + '" class="fa-solid fa-angles-down"></i></div>' +
                     '</div>' +
                 '</div>' +

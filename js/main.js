@@ -133,7 +133,7 @@ $(document).ready(() => {
 		if (confirm('Sollen wirklich alle daten gelöscht werden. Diese könnne nicht wiederhergestellt werden.')) {
 			localStorage.clear();
 			$.notify('Alle Daten wurden gelöscht.', 'success');
-			setTimeout(location.reload, 2000);
+			setTimeout(() => {location.reload()}, 2000);
 		}
 	});
 

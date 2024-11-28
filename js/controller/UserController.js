@@ -46,10 +46,17 @@ class UserController {
 			for (var key in users) {
 				if (Object.hasOwnProperty.call(users, key)) {
 					var user = users[key],
-						driver = user.get('driver') || "";
+						driver = user.get('driver') || "",
+						rank = user.get('rank').get('abbr'),
+						flag = user.get('flag').get('text'),
+						task = user.get('task').get('name');
+						
 					if (user.get('lastName').toLowerCase().includes(param)
 						|| user.get('firstName').toLowerCase().includes(param)
-						|| driver.toLowerCase().includes(param)) {
+						|| driver.toLowerCase().includes(param)
+						|| rank.toLowerCase().includes(param)
+						|| flag.toLowerCase().includes(param)
+						|| task.toLowerCase().includes(param)) {
 							userList.push(user);
 					}
 				}
@@ -81,10 +88,6 @@ class UserController {
 		}
 	}
 
-	static edit(userID) {
-		console.error("I don't think I'll implement that.");
-	}
-
 	static toggleUserLog(userID) {
 		let u = new User(userID);
 		u.set('showLogs', !u.get('showLogs')).save();
@@ -102,6 +105,54 @@ class UserController {
 			this.refreshTable();
 		} else {
 			View.error('Ein unerwarteter Fehler ist aufgetreten #235', 'inp-update-rank-' + userID);
+		}
+	}
+
+	static updateFirstName(userID, e) {
+		if (e.keyCode == 13) {
+			let u = new User(parseInt(userID)),
+				styleID = 'inp-update-first-name-' + userID,
+				newName = UserView.getInpValue(styleID);
+
+			if (u.set('firstName', newName).save()) {
+				let msg = 'Vorname zu "' + newName + '" geändert';
+				View.success(msg, styleID);
+				new Log(null, userID, null, msg).save();
+			} else {
+				View.error('Ein unerwarteter Fehler ist aufgetreten #135', styleID)
+			}
+		}
+	}
+
+	static updateLastName(userID, e) {
+		if (e.keyCode == 13) {
+			let u = new User(parseInt(userID)),
+			styleID = 'inp-update-last-name-' + userID,
+			newName = UserView.getInpValue(styleID);
+
+			if (u.set('lastName', newName).save()) {
+				let msg = 'Name zu "' + newName + '" geändert';
+				View.success(msg, styleID);
+				new Log(null, userID, null, msg).save();
+			} else {
+				View.error('Ein unerwarteter Fehler ist aufgetreten #1', styleID)
+			}
+		}
+	}
+
+	static updateDriver(userID, e) {
+		if (e.keyCode == 13) {
+			let u = new User(parseInt(userID)),
+			styleID = 'inp-update-driver-' + userID,
+			newDriver = UserView.getInpValue(styleID);
+
+			if (u.set('driver', newDriver).save()) {
+				let msg = 'Fahrer zu "' + newDriver + '" geändert';
+				View.success(msg, styleID);
+				new Log(null, userID, null, msg).save();
+			} else {
+				View.error('Ein unerwarteter Fehler ist aufgetreten #2')
+			}
 		}
 	}
 

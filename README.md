@@ -19,7 +19,7 @@ So verwenden Sie die Software:
 Wenn Sie diese Schritte befolgen, wird die Software vollständig offline betrieben.
 Bitte beachten Sie, dass alle Daten ausschließlich lokal auf Ihrem Gerät gespeichert werden und nicht an einen Server übertragen werden.
 
-## Italo
+## Italiano
 Per utilizzare il software, segui questi passaggi:
 1. Clicca sul pulsante verde "Code".
 2. Seleziona "Scarica ZIP" dal menu a tendina.
@@ -29,7 +29,7 @@ Per utilizzare il software, segui questi passaggi:
 Seguendo questi passaggi, il software funzionerà completamente offline.
 Nota che tutti i dati saranno archiviati solo sul tuo dispositivo e non verranno mai trasmessi a un server.
 
-## Franco
+## Français
 Pour utiliser le logiciel, suivez ces étapes:
 1. Cliquez sur le bouton vert « Code ».
 2. Sélectionnez « Télécharger ZIP » dans le menu déroulant.
