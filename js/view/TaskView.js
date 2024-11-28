@@ -28,7 +28,7 @@ class TaskView extends View {
 
 	static refreshSetDefaultForm(tasks, defaultTask) {
 		$('#inpDefaultTask').empty();
-		$('#inpDefaultTask').append(TaskView.generateSelectOptions(tasks, defaultTask.get('id')));
+		$('#inpDefaultTask').append(TaskView.generateSelectOptions(tasks, defaultTask.get('taskID')));
 	}
 
 }

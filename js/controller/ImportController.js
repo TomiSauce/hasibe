@@ -16,7 +16,7 @@ class ImportController {
 								c = 0,
 								ranks = Rank.getAll(),
 								flagID = Flag.getAll()[0].get('id'),
-								taskID = Task.getAll()[0].get('id');
+								taskID = DefaultTask.getAll()[0].get('taskID');
 			
 							for (let user of users) {
 								let u = new User(),
