@@ -9,7 +9,7 @@ class View {
 	}
 
 	static error(msg, attachTo=null) {
-		if (config.sound) new Audio('/assets/audio/error.wav').play();
+		if (config.sound) new Audio('./assets/audio/error.wav').play();
 		if (attachTo) {
 			this.#attachTo(msg, 'error', attachTo);
 		} else {
@@ -18,7 +18,7 @@ class View {
 	}
 
 	static success(msg, attachTo=null) {
-		if (config.sound) new Audio('/assets/audio/success.wav').play();
+		if (config.sound) new Audio('./assets/audio/success.wav').play();
 		if (attachTo) {
 			this.#attachTo(msg, 'success', attachTo);
 		} else {
@@ -27,7 +27,7 @@ class View {
 	}
 
 	static warn(msg, attachTo=null) {
-		if (config.sound) new Audio('/assets/audio/notification.ogg').play();
+		if (config.sound) new Audio('./assets/audio/notification.ogg').play();
 		if (attachTo) {
 			this.#attachTo(msg, 'warn', attachTo);
 		} else {

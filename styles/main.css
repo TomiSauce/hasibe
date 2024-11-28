@@ -48,7 +48,12 @@ body {
 
 h2 {
 	margin-top: 0;
+	font-size: 20pt;
 	color: var(--black-main);
+}
+
+h3 {
+	font-size: 16pt;
 }
 
 .section {
@@ -87,6 +92,10 @@ input[type="button"]:hover,
 
 #no-result-log {
 	color: var(--white-main);
+}
+
+.fi {
+	margin-left: 10px;
 }
 
 

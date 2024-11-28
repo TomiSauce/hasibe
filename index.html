@@ -1,6 +1,15 @@
 <!--
-- export
-- import file von mehreren sprachen
+O export
+O import file from export
+	X german
+	O french
+	O italian 
+X setting a default task before importing
+O Print QR-Code for each user
+O Update 
+	O First Name
+	O Last name
+	O Driver
 -->
 
 <!DOCTYPE html>
@@ -10,6 +19,7 @@
 		<title>Häsibe V8</title>
 		<link href="styles/main.css" rel="stylesheet">
 		<link href="styles/fontawesome-6.5.1.min.css" rel="stylesheet">
+		<link href="styles/flag-icons.min.css" rel="stylesheet">
 		<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
 	</head>
 	<body>
@@ -29,7 +39,7 @@
 			<div class="section" id="section-user-list">
 				<h2>Liste AdAs</h2>
 				<div class="input-bar input-bar-search">
-					<div><input id="inpSearch" type="text" name="name" placeholder="Name / Vorname / Fahrer"></div>
+					<div><input id="inpSearch" type="text" placeholder="Name / Vorname / Fahrer"></div>
 					<i class="btn-search fa-solid fa-magnifying-glass"></i>
 				</div>
 				<div class="table-outer">
@@ -93,14 +103,23 @@
 					<div class="spacer"></div>
 					<div class="spacer"></div>
 				</div>
+				<h2>Standart Auftrag festlegen</h2>
+				<div class="input-bar">
+					<div><select id="inpDefaultTask"></select></div>
+					<div><input id="btnDefaultTask" type="button" value="Standart Setzen"></div>
+				</div>
+				<div class="input-bar-mask">
+					<div id="inpDefaultTaskMask"></div>
+					<div class="spacer"></div>
+				</div>
 			</div>
 		</div>
 
 		<div id="footer">
 			<div>
-				<p><a target="_blank" href="disclaimer.html">Disclaimer</a>&nbsp;&nbsp;<i class="fa fa-legal"></i></p>
+				<p><a href="disclaimer.html">Disclaimer</a>&nbsp;&nbsp;<i class="fa fa-legal"></i></p>
 				<p><a target="_blank" href="https://kodikas.ch/contact">Kontakt</a>&nbsp;&nbsp;<i class="fa fa-address-book"></i></p>
-				<p><a target="_blank" href="https://kodikas.ch/downloads/#hasibe">Download Source Code</a>&nbsp;&nbsp;<i class="fa fa-code"></i></p>
+				<p><a target="_blank" href="https://github.com/TomiSauce/hasibe">Download Source Code</a>&nbsp;&nbsp;<i class="fa fa-code"></i></p>
 				<p><a target="_blank" href="https://kodikas.ch/other/hasibe/">Tell me More</a>&nbsp;&nbsp;<i class="fa fa-info"></i></p>
 			</div>
 			<div>
@@ -132,6 +151,7 @@
 	<script src="js/model/Flag.js" charset="utf-8"></script>
 	<script src="js/model/Rank.js" charset="utf-8"></script>
 	<script src="js/model/Task.js" charset="utf-8"></script>
+	<script src="js/model/DefaultTask.js" charset="utf-8"></script>
 	<script src="js/model/User.js" charset="utf-8"></script>
 	<script src="js/model/Log.js" charset="utf-8"></script>
 

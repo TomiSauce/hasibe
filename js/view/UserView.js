@@ -2,7 +2,7 @@ class UserView extends View {
 
     static refreshCreateForm(ranks, tasks) {
         $('#inpRank').append(RankView.generateSelectOptions(ranks));
-        $('#inpTask').append(TaskView.generateSelectOptions(tasks));
+        $('#inpTask').append(TaskView.generateSelectOptions(tasks, DefaultTask.getAll()[0].get('taskID')));
     }
 
     static getFormInputs() {
@@ -63,7 +63,7 @@ class UserView extends View {
                 '</div>' +
                 '<div class="user-details" id="user-details-' + uid + '"></div>';
     }
-    
+
     static showUserLog(userID, logs) {
         let out = '';
         if (logs.length) {
