@@ -16,6 +16,7 @@ class TaskController {
 				View.success('Auftrag erstellt');
 				TaskView.clearCreateForm();
 				UserController.refreshTable();
+				DataController.refresh();
 			}
 		}
 	}
@@ -34,6 +35,7 @@ class TaskController {
 			new Log(null, null, null, 'Der Standardauftrag wurde von "' + oldTask.get('name') + '" zu "' + new Task(Number(inp)).get('name') + '" geändert.').save();
 	
 			UserController.refreshCreateForm();
+			DataController.refresh();
 		}
 	}
 

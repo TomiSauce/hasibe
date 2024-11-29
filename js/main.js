@@ -105,6 +105,7 @@ $(document).ready(() => {
 	UserController.refreshCreateForm();
 	UserController.refreshTable();
 	TaskController.refreshSetDefault();
+	DataController.refresh(true);
 
 	$('#btn-volume-switch').on('click', () => {
 		if (config.sound) {
@@ -139,7 +140,6 @@ $(document).ready(() => {
 
 	setInterval(function() {
 		if ($('#section-user-list:hover').length == 0) UserController.refreshTable();
-		DataController.refresh();
 	}, 1000);
 
 	$('#inpImport').on('change', ImportController.parseExcel);

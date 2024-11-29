@@ -78,7 +78,7 @@ class LocalStorage {
                 }
                 var xLen = ((localStorage[x].length + x.length) * 2);
                 usedSpace += xLen;
-                // Uncomment to log KB used per by key
+                // Uncomment to log KB used by key
                 // console.log(x + " = " + (xLen / 1024).toFixed(2) + " KB");
             }
         } else {
@@ -87,24 +87,31 @@ class LocalStorage {
         return usedSpace;
     }
 
-    static getStorageAvailable() {
-        var dataKey = 'AVAILABLE_DATA',
+    static getStorageAvailable(forceRecalculation) {
+        let availableKey = 'storageAvailable',
+            available = localStorage.getItem(availableKey);
+        
+        if (forceRecalculation || available == null) {
+            var dataKey = 'AVAILABLE_DATA',
             limitReached = false,
-            data = 'd',
-            usedSpace = 0;
+            data = 'd';
+            available = 0;
 
-        do {
-            try { 
-                localStorage.setItem(dataKey, data);
-                data = data + data;
-            } catch(e) {
-                usedSpace = this.getStorageUsed(dataKey);
-                limitReached = true;
-            }
-        } while (!limitReached);
+            do {
+                try { 
+                    localStorage.setItem(dataKey, data);
+                    data = data + data;
+                } catch(e) {
+                    available = this.getStorageUsed(dataKey);
+                    limitReached = true;
+                }
+            } while (!limitReached);
 
-        localStorage.removeItem(dataKey);
-        return usedSpace;
+            localStorage.removeItem(dataKey);
+            localStorage.setItem(availableKey, available);
+            return available;
+        }
+        return available;
     }
 
 }

@@ -36,6 +36,7 @@ class ImportController {
 							}
 							View.success('"' + c + '" neue AdAs hinzugefüght.');
 							UserController.refreshTable();
+							DataController.refresh();
 						});
 					} catch (ex) {
 						View.error('Die Datei "' + file.name + '" konnte nicht geladen werden #007');
@@ -56,6 +57,7 @@ class ImportController {
 			reader.readAsBinaryString(file);
 		} catch (e) {
 			View.error('Die Datei "' + file.name + '" konnte nicht geladen werden #0600');
+			console.error(ex);
 		}
 	}
 
