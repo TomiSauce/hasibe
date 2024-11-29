@@ -1,8 +1,8 @@
 class DataController {
 
-    static refresh() {
+    static refresh(forceRecalculation = false) {
         let storageUsed = LocalStorage.getStorageUsed(),
-            storageAvail = LocalStorage.getStorageAvailable(),
+            storageAvail = LocalStorage.getStorageAvailable(forceRecalculation),
             total = storageUsed + storageAvail;
 
         DataView.refresh(storageUsed, storageAvail, 100 / total * storageUsed);

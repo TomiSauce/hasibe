@@ -47,7 +47,7 @@ class UserView extends View {
                     '</select>' +
                     '<input type="text" id="inp-update-last-name-' + uid + '" value="' + user.get('lastName') + '" onkeyup="UserController.updateLastName(' + uid + ', event)" title="Enter fürs Speichern">' +
                     '<input type="text" id="inp-update-first-name-' + uid + '" value="' + user.get('firstName') + '" onkeyup="UserController.updateFirstName(' + uid + ', event)" title="Enter fürs Speichern">' +
-                    '<input type="text" id="inp-update-driver-' + uid + '" value="' + ((user.get('driver')) ? user.get('driver') : '---') + '" onkeyup="UserController.updateDriver(' + uid + ', event)" title="Enter fürs Speichern">'+
+                    '<input type="text" id="inp-update-driver-' + uid + '" value="' + ((user.get('driver')) ? user.get('driver') : '') + '" onkeyup="UserController.updateDriver(' + uid + ', event)" title="Enter fürs Speichern" placeholder="-">'+
                     '<select id="inp-update-flag-' + uid +'" onchange="UserController.updateFlag(' + "'" + uid + "'"+')">'+
                         FlagView.generateSelectOptions(flags, user.get('flagID')) +
                     '</select>' +

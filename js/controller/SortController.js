@@ -8,6 +8,7 @@ class SortController {
         };
         localStorage.setItem('sortBy', JSON.stringify(out));
         UserController.refreshTable();
+        DataController.refresh();
     }
 
     static sortUsers(users) {

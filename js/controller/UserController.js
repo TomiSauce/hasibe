@@ -32,6 +32,7 @@ class UserController {
 				UserView.clearCreateForm();
 				UserController.refreshTable();
 				new Log(null, u.get('id'), u.get('taskID'), 'Benutzer "' + inp.lastName + ', ' + inp.firstName + '" erstellt').save();
+				DataController.refresh();
 			}
 		}
 	}
@@ -83,6 +84,7 @@ class UserController {
 			View.success('AdA gelöscht');
 			UserController.refreshTable();
 			SearchController.search();
+			DataController.refresh();
 		} else {
 			View.error('Unerwarteter Fehler: #90');
 		}
@@ -92,6 +94,7 @@ class UserController {
 		let u = new User(userID);
 		u.set('showLogs', !u.get('showLogs')).save();
 		this.refreshTable();
+		DataController.refresh();
 	}
 
 	static updateRank(userID) {
@@ -103,6 +106,7 @@ class UserController {
 			View.success(msg, 'inp-update-rank-' + userID);
 			new Log(null, userID, null, msg).save();
 			this.refreshTable();
+			DataController.refresh();
 		} else {
 			View.error('Ein unerwarteter Fehler ist aufgetreten #235', 'inp-update-rank-' + userID);
 		}
@@ -118,6 +122,7 @@ class UserController {
 				let msg = 'Vorname zu "' + newName + '" geändert';
 				View.success(msg, styleID);
 				new Log(null, userID, null, msg).save();
+				DataController.refresh();
 			} else {
 				View.error('Ein unerwarteter Fehler ist aufgetreten #135', styleID)
 			}
@@ -134,6 +139,7 @@ class UserController {
 				let msg = 'Name zu "' + newName + '" geändert';
 				View.success(msg, styleID);
 				new Log(null, userID, null, msg).save();
+				DataController.refresh();
 			} else {
 				View.error('Ein unerwarteter Fehler ist aufgetreten #1', styleID)
 			}
@@ -150,6 +156,7 @@ class UserController {
 				let msg = 'Fahrer zu "' + newDriver + '" geändert';
 				View.success(msg, styleID);
 				new Log(null, userID, null, msg).save();
+				DataController.refresh();
 			} else {
 				View.error('Ein unerwarteter Fehler ist aufgetreten #2')
 			}
@@ -165,6 +172,7 @@ class UserController {
 			View.success(msg, 'inp-update-flag-' + userID);
 			new Log(null, userID, null, msg).save();
 			this.refreshTable();
+			DataController.refresh();
 		} else {
 			View.error('Ein unerwarteter Fehler ist aufgetreten #6005', 'inp-update-flag-' + userID);
 		}
@@ -180,6 +188,7 @@ class UserController {
 			View.success(msg, 'inp-update-task-' + userID);
 			new Log(null, userID, null, msg).save();
 			this.refreshTable();
+			DataController.refresh();
 		} else {
 			View.error('Ein unerwarteter Fehler ist aufgetreten #556', 'inp-update-task-' + userID);
 		}
@@ -187,6 +196,7 @@ class UserController {
 
 	static setTimeStarted(user) {
 		user.set('taskStartedAt', (user.get('task').get('maxMinutes') !== null ? new Date().getTime() : null)).save();
+		DataController.refresh();
 	}
 
 	static getTimeLeft(user) {
@@ -194,8 +204,4 @@ class UserController {
 		return (user.get('task').get('maxMinutes') * 60 * 1000) - (new Date().getTime() - user.get('taskStartedAt'));
 	}
 
-	static sort(e) {
-		if (e.target.id == '') return;
-		let sortBy = e.target.id.split(/(?=[A-Z])/)[1].toLowerCase();
-	}
 }
